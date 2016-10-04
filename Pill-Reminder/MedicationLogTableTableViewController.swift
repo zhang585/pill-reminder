@@ -24,33 +24,32 @@ class MedicationLogTableTableViewController: UITableViewController {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMedications")
         request.returnsObjectsAsFaults = false
         
-        totalEntries = context.count(for: NSFetchRequest<NSFetchRequestResult>)(request: NSFetchRequest, error: NSErrorPointer)
+        totalEntries = request.fetchBatchSize
     }
     
-    count(for request: NSFetchRequest<NSFetchRequestResult>) throws -> Int
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    override func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return totalEntries
     }
-
+    
     
     //this function creates a cell every time it's called by the function above
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Default")
         let appDel = (UIApplication.shared.delegate as! AppDelegate)
         let context = appDel.persistentContainer.viewContext
