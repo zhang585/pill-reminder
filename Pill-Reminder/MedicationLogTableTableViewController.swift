@@ -18,10 +18,10 @@ class MedicationLogTableTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDel = (UIApplication.shared.delegate as! AppDelegate)
-        let context = appDel.persistentContainer.viewContext
+        let appDel = UIApplication.shared.delegate as! AppDelegate
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMedications")
+        print("request size : \(request.fetchBatchSize)");
         request.returnsObjectsAsFaults = false
         
         totalEntries = request.fetchBatchSize
@@ -57,6 +57,8 @@ class MedicationLogTableTableViewController: UITableViewController {
         request.returnsObjectsAsFaults = false
         
         let results: NSArray = (try? context.fetch(request)) as NSArray!
+        
+        print("In cellForRowAtIndexPath")
         
         //get contents and put into cell
         let thisMedication: UserMedications = results[indexPath.row] as! UserMedications
