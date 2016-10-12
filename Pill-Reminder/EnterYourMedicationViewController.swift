@@ -19,6 +19,7 @@ class EnterYourMedicationViewController: UIViewController {
     
     @IBAction func medLoggedButton(sender: AnyObject) {
         if let Name = medicationName.text{
+            print("medLoggedButton")
             if Name.isEmpty == false{
                 let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
                 let context: NSManagedObjectContext = appDel.persistentContainer.viewContext
