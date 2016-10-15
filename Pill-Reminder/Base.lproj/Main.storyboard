@@ -97,8 +97,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whz-br-b4M">
                                 <state key="normal" title="Log Medication"/>
                                 <connections>
-                                    <action selector="medLoggedButton:" destination="kj3-VO-Bx0" eventType="touchUpInside" id="RnA-OW-HdJ"/>
-                                    <action selector="medLoggedButtonWithSender:" destination="kj3-VO-Bx0" eventType="touchUpInside" id="WaW-Z1-Gr4"/>
+                                    <action selector="logButtonAction:" destination="kj3-VO-Bx0" eventType="touchUpInside" id="IXR-T5-2bE"/>
                                     <segue destination="y43-ua-WM5" kind="push" id="B7i-Pd-cir"/>
                                 </connections>
                             </button>

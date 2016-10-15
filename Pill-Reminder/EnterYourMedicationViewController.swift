@@ -17,48 +17,48 @@ class EnterYourMedicationViewController: UIViewController {
     
     @IBOutlet weak var drugType: UISwitch!
     
-    @IBAction func medLoggedButton(sender: AnyObject) {
-        if let Name = medicationName.text{
-            print("medLoggedButton")
-            if Name.isEmpty == false{
-                let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
-                let context: NSManagedObjectContext = appDel.persistentContainer.viewContext
-                let ent = NSEntityDescription.entity(forEntityName: "UserMedications", in: context)!
-                
-                //Instance of our custom class, reference to entity
-                let newMedication = UserMedications(entity: ent, insertInto: context)
-                
-                //Fill in the Core Data
-                newMedication.medicationName = Name
-                if(drugType.isOn){
-                    newMedication.type = "Rx"
+    @IBAction func logButtonAction(_ sender: AnyObject) {
+            if let Name = medicationName.text{
+                print("medLoggedButton")
+                if Name.isEmpty == false{
+                    let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+                    let context: NSManagedObjectContext = appDel.persistentContainer.viewContext
+                    let ent = NSEntityDescription.entity(forEntityName: "UserMedications", in: context)!
+                    
+                    //Instance of our custom class, reference to entity
+                    let newMedication = UserMedications(entity: ent, insertInto: context)
+                    
+                    //Fill in the Core Data
+                    newMedication.medicationName = Name
+                    if(drugType.isOn){
+                        newMedication.type = "Rx"
+                    }else{
+                        //Switch is off
+                        newMedication.type = "OTC"
+                    }
+                    
+                    let dateFormatter = DateFormatter()
+                    let curLocale: Locale = Locale.current
+                    let formatString: String = DateFormatter.dateFormat(fromTemplate: "EdMMM h:mm a", options: 0, locale: curLocale as Locale)!
+                    dateFormatter.dateFormat = formatString as String
+                    newMedication.date = dateFormatter.string(from: NSDate() as Date)
+                    
+                    do {
+                        try context.save()
+                    } catch _ {
+                    }
                 }else{
-                    //Switch is off
-                    newMedication.type = "OTC"
-                }
-                
-                let dateFormatter = DateFormatter()
-                let curLocale: Locale = Locale.current
-                let formatString: String = DateFormatter.dateFormat(fromTemplate: "EdMMM h:mm a", options: 0, locale: curLocale as Locale)!
-                dateFormatter.dateFormat = formatString as String
-                newMedication.date = dateFormatter.string(from: NSDate() as Date)
-                
-                do {
-                    try context.save()
-                } catch _ {
+                    //User carelessly pressed save button without entering medication details.
+                    let alert:UIAlertController = UIAlertController(title: "No Medication Entered", message: "Enter your medication before pressing save.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(result)in
+                        alert.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }else{
-                //User carelessly pressed save button without entering medication details.
-                let alert:UIAlertController = UIAlertController(title: "No Medication Entered", message: "Enter your medication before pressing save.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(result)in
-                    alert.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
+                print("No element text for the UITextField 'medicationName'")
             }
-        }else{
-            print("No element text for the UITextField 'medicationName'")
-        }
-        
+            
     }
     
     //Hide the keyboard
