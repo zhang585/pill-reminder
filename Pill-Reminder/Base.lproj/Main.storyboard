@@ -190,6 +190,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="drugType" destination="VkK-LT-QT1" id="bQe-ff-ya2"/>
+                        <outlet property="medName" destination="Jvx-Hk-aI1" id="ESe-cn-0TO"/>
                         <outlet property="medicationName" destination="Jvx-Hk-aI1" id="TGS-fi-84z"/>
                         <outlet property="medicationStrength" destination="Bb6-8d-WKr" id="VCT-XJ-hZK"/>
                     </connections>
