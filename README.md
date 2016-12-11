@@ -6,4 +6,6 @@ Pill Reminder is an iOS app that logs medication use and sets reminders for when
 
 #Pending Features
 
-Pending features include detecting patterns, making suggestions based on patterns, reminding when a refill is due, and improved user interface.
+Pending features include detecting patterns, making suggestions based on patterns, reminding when a refill is due, and improved user interface. 
+
+Further integration with community pharmacies and health systems would allow for incentives/rewards for adherence and improved outcomes.
