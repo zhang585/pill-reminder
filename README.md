@@ -2,7 +2,7 @@
 
 Pill Reminder is an iOS app that logs medication use and sets reminders for when medication is due to be taken. It's programmed in Swift and Core Data. The app is co-created by Sandy Zhang and Ivan Zhang.
 
-![Alt text](https://dl.dropboxusercontent.com/u/94614686/screens/pillreminder.png)
+![](http://capsus.com/screens/pillreminder.png)
 
 #Pending Features
 
